@@ -1,0 +1,19 @@
+
+<!--<div class="flex items-center">-->
+<!--  <p-checkbox [inputId]="category.key" name="group" [value]="" [(ngModel)]="selectedCategories" />-->
+<!--  <label [for]="category.key" class="ml-2"> {{ category.name }} </label>-->
+<!--</div>-->
+
+<aside
+  class="w-52 bg-gradient-to-b from-white to-gray-100 p-5 rounded-xl sticky top-6 h-fit shadow-lg border border-gray-200 text-black"
+>
+  <h3 class="text-lg font-semibold mb-4">Filters</h3>
+  <div class="flex items-center">
+    <p-checkbox inputId="ingredient1" name="pizza" value="Spor" [(ngModel)]="kategori" />
+    <label for="ingredient1" class="ml-2"> Spor </label>
+  </div>
+  <div class="flex items-center">
+    <p-checkbox inputId="ingredient2" name="pizza" value="Giyim" [(ngModel)]="kategori" />
+    <label for="ingredient2" class="ml-2"> Giyim </label>
+  </div>
+</aside>
