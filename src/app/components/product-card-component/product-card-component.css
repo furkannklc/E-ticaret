@@ -1,0 +1,4 @@
+
+::ng-deep .p-rating .p-rating-icon.pi-star-fill {
+  color: gold; /* Dolu yıldız rengi */
+}
