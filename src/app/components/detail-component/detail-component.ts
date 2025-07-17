@@ -9,15 +9,17 @@ import {InputNumber} from 'primeng/inputnumber';
 import { MessageService } from 'primeng/api';
 import {Toast} from 'primeng/toast';
 import {Ripple} from 'primeng/ripple';
+import {AutoCompleteCompleteEvent, AutoCompleteModule} from 'primeng/autocomplete';
+import {Sepetservices} from '../../services/sepetservices';
+import {SepeteEklenenModel} from '../../models/sepeteEklenen.model';
 @Component({
   selector: 'app-detail-component',
   imports: [
-    RadioButton,
     FormsModule,
     Rating,
-    InputNumber,
     Toast,
-    Ripple
+    Ripple,
+    AutoCompleteModule
   ],
   templateUrl: './detail-component.html',
   styleUrl: './detail-component.css',
@@ -37,18 +39,28 @@ export class DetailComponent implements OnInit {
     { name: 'L', value: 'l' },
     { name: 'XL', value: 'xl' }
   ];
+
   selectSize(sizeValue: string) {
     this.selectedSize = sizeValue;
   }
   isSizeSelected(sizeValue: string): boolean {
     return this.selectedSize === sizeValue;
   }
-  urunId!: number ;
-  selectedColor: string = '';
-  selectedSize: string = '';
+
   urun!:Product;
-  constructor(private route: ActivatedRoute,private urunServis:Productservices,private messageService: MessageService) { }
-  renkler: string[] = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı', 'Beyaz'];
+
+  urunId!: number ;
+  items: any[] = [];
+  selectedSize: string = '';
+  selectedColor: string = '';
+  selectedQuantity: number = 0;
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private urunServis:Productservices,
+    private messageService: MessageService,private sepetservices : Sepetservices) { }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
@@ -62,23 +74,36 @@ export class DetailComponent implements OnInit {
       console.log("Ürün Detay:", this.urun);
     })
   }
-  renk(renk: string) {
-    console.log("Seçilen Renk:", renk);
-  }
-  sepeteGit(){
 
-  }
   selectColor(color: string) {
     this.selectedColor = color;
   }
 
-  // Seçili mi kontrol eden fonksiyon
   isSelected(color: string): boolean {
     return this.selectedColor === color;
   }
 
   showBottomRight() {
-    this.messageService.add({ severity: 'success', summary: 'Ürün Sepete Eklendi', detail: 'Ürününüz başar ile eklendi', key: 'br', life: 3000 });
+
+    if (!this.selectedColor || !this.selectedSize || this.selectedQuantity <= 0) {
+      this.messageService.add({ severity: 'info', summary: 'Uyarı', detail: 'Sepete eklemek için lütfen renk ve beden seçiniz.', key: 'br', life: 3000 });
+      return;
+    }
+    else{
+      const sepeteEklenecekUrun = new SepeteEklenenModel();
+      sepeteEklenecekUrun.id = this.urunId;
+      sepeteEklenecekUrun.color = this.selectedColor;
+      sepeteEklenecekUrun.size = this.selectedSize;
+      sepeteEklenecekUrun.count = this.selectedQuantity;
+      this.sepetservices.sepeteEkle(sepeteEklenecekUrun)
+      this.messageService.add({ severity: 'success', summary: 'Ürün Sepete Eklendi', detail: 'Ürününüz başar ile eklendi', key: 'br', life: 3000 });
+    }
+
+    console.log("sdfdfsd"+this.selectedQuantity)
+
+  }
+
+  search(event: AutoCompleteCompleteEvent) {
+    this.items = Array.from({ length: 31 }, (_, i) => i);
   }
 }
-

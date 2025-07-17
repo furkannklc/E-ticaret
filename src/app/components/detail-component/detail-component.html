@@ -50,14 +50,15 @@
       </div>
 
       <div class="flex items-center gap-3 mt-10">
-        <div class="flex border rounded">
-          <p-inputNumber
-
-          [min]="1"
-          [max]="30"
-          [showButtons]="true"
-          buttonLayout="horizontal"
-          [inputStyle]="{ width: '4rem', textAlign: 'center' }"></p-inputNumber>
+        <div class="flex  rounded bg-white">
+          <p-autoComplete
+            [(ngModel)]="selectedQuantity"
+            [dropdown]="true"
+            [suggestions]="items"
+            (completeMethod)="search($event)"
+            class="w-full bg-white text-black"
+            inputStyleClass="bg-white text-black"
+          ></p-autoComplete>
         </div>
 
         <button pRipple (click)="showBottomRight()"  class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Add to Cart</button>
