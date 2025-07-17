@@ -5,9 +5,10 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import {provideHttpClient} from '@angular/common/http';
 import {definePreset} from '@primeuix/themes';
+import {MessageService} from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
+  providers: [MessageService,
     provideHttpClient(),
     provideAnimationsAsync(),
     providePrimeNG({

@@ -17,38 +17,52 @@
         jjjjjjjjjjjjj
         jjjjj</p>
       <div>
+
         <p class="font-medium mb-1">Color</p>
-        <div class="flex space-x-3">
-          <button
-            class="w-6 h-6 rounded-full bg-gray-500 border-2 border-gray-400 transition-colors duration-200"
-          ></button>
-          <button class="w-6 h-6 rounded-full bg-green-500 border-2 border-green-400"></button>
-          <button class="w-6 h-6 rounded-full bg-blue-500 border-2 border-blue-400"></button>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between items-center mb-1">
+
+          <div class="flex space-x-3 mt-5">
+            @for (color of colors; track color.name) {
+              <button
+                (click)="selectColor(color.name)"
+                [class]="isSelected(color.name) ?
+        'w-8 h-8 rounded-full cursor-pointer ' + color.activeBg + ' scale-110 shadow-lg ring-2 ' + color.ring + ' transition-all duration-200' :
+        'w-8 h-8 rounded-full cursor-pointer ' + color.bg + ' ' + color.hover + ' hover:scale-110 hover:shadow-lg transition-all duration-200'">
+              </button>
+            }
+          </div>
+
+      <div class="mt-10">
+        <div class="flex justify-between items-center mt-6">
           <p class="font-medium">Size</p>
-          <a href="#" class="text-sm text-blue-500 hover:underline">Size Guide</a>
+
         </div>
-        <div class="grid grid-cols-5 gap-2">
-          <button class="border rounded px-3 py-2 text-sm">XS</button>
-          <button class="border rounded px-3 py-2 text-sm">S</button>
-          <button class="border rounded px-3 py-2 text-sm border-green-500">M</button>
-          <button class="border rounded px-3 py-2 text-sm">L</button>
-          <button class="border rounded px-3 py-2 text-sm">XL</button>
+        <div class="grid grid-cols-5 gap-2 mt-5" >
+          @for (size of sizes; track size.value) {
+            <button class="cursor-pointer"
+              (click)="selectSize(size.value)"
+              [class]="isSizeSelected(size.value) ?
+          'border rounded px-3 py-2 text-sm border-green-500 bg-green-50 text-green-700 transition-all duration-200' :
+          'border rounded px-3 py-2 text-sm border-gray-300 hover:border-green-400 hover:bg-green-50 transition-all duration-200'">
+              {{ size.name }}
+            </button>
+          }
         </div>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 mt-10">
         <div class="flex border rounded">
-          <button class="px-2">-</button>
-          <input type="text" value="1" class="w-8 text-center border-l border-r outline-none"/>
-          <button class="px-2">+</button>
+          <p-inputNumber
+
+          [min]="1"
+          [max]="30"
+          [showButtons]="true"
+          buttonLayout="horizontal"
+          [inputStyle]="{ width: '4rem', textAlign: 'center' }"></p-inputNumber>
         </div>
 
-        <button class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Add to Cart</button>
-        <button class="text-gray-500 text-xl">♡</button>
+        <button pRipple (click)="showBottomRight()"  class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Add to Cart</button>
+        <p-toast position="top-center" key="br" />
+
       </div>
     </div>
 
