@@ -33,6 +33,8 @@ export class DetailComponent implements OnInit {
       console.log("Ürün Detay:", this.urun);
     })
   }
+  sepeteGit(){
 
+  }
 }
 

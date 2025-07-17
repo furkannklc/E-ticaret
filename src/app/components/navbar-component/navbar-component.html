@@ -20,14 +20,15 @@
     <ul class="flex flex-row gap-5 text-lg font-semibold text-gray-700">
       <li><a href="/">Ana Sayfa</a></li>
       <li><a href="/about">Hakkımızda</a></li>
-      <li><a href="/contact">çıkış</a></li>
+      <li><a href="/contact">İletişim</a></li>
+      <li><i style="font-size: 25px;" class="pi pi-user"></i> </li>
       <li>
-        <div class="relative ">
+        <div class="relative cursor-pointer" (click)="sepeteGit()">
           <span
           class="absolute top-0 -right-1  bg-amber-600 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow">
         6
       </span>
-        <i style="font-size: 25px" class="pi pi-shopping-cart  mt-1"></i>
+        <i  style="font-size: 25px" class="pi pi-shopping-cart  mt-1	"></i>
       </div>
         </li>
     </ul>

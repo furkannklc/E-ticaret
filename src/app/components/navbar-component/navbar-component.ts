@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,5 +12,10 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './navbar-component.css'
 })
 export class NavbarComponent {
+  constructor(private router : Router) {
+  }
 aranacak!: string;
+sepeteGit(){
+  this.router.navigate(['/sepet']);
+}
 }
