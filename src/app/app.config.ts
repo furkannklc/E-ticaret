@@ -4,6 +4,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import {provideHttpClient} from '@angular/common/http';
+import {definePreset} from '@primeuix/themes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,7 +12,14 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset:definePreset(Aura, {
+          semantic: {
+            primary: {
+              400: '{yellow.400}',
+              500: '{red.500}',
+            }
+          }
+        })
       }
     })
   ]

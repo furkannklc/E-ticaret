@@ -1,11 +1,14 @@
 
-<app-navbar-component>
-</app-navbar-component>
-<div class="flex gap-6 p-6">
+<div class="min-h-screen flex flex-col">
 
-  <app-filter-component>
-  </app-filter-component>
-<!--  <app-product-card-component>-->
-<!--  </app-product-card-component>-->
-  <router-outlet></router-outlet>
+  <app-navbar-component></app-navbar-component>
+
+
+  <div class="flex-1 flex gap-6 p-6">
+    <app-filter-component></app-filter-component>
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <app-footer-component></app-footer-component>
 </div>

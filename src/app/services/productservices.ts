@@ -13,5 +13,10 @@ export class Productservices {
   urunlerGetir(){
     return this.http.get<Product[]>(`${this.apiUrl}/products`);
   }
-
+  urunGetir(id: number){
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
+  }
+  kategorileriGetir() {
+    return this.http.get<string[]>(`${this.apiUrl}/products/categories`);
+  }
 }

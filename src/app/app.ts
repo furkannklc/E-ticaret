@@ -4,10 +4,11 @@ import {Button} from 'primeng/button';
 import { Productservices } from './services/productservices';
 import {ProductCardComponent} from './components/product-card-component/product-card-component';
 import {FilterComponent} from './components/filter-component/filter-component';
-import {NavbarComponent} from './components/navbar-component/navbar-component'; // Adjust the import path as necessary
+import {NavbarComponent} from './components/navbar-component/navbar-component';
+import {FooterComponent} from './components/footer-component/footer-component'; // Adjust the import path as necessary
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Button, ProductCardComponent, FilterComponent, NavbarComponent],
+  imports: [RouterOutlet, Button, ProductCardComponent, FilterComponent, NavbarComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

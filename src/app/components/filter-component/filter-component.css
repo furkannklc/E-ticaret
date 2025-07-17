@@ -1,0 +1,11 @@
+::ng-deep .p-checkbox-box.p-highlight {
+  @apply bg-red-400 border-red-400;
+}
+
+::ng-deep .p-checkbox .p-checkbox-box {
+  @apply border-gray-400; /* Unchecked durum için */
+}
+
+::ng-deep .p-checkbox .pi-check {
+  @apply text-white; /* Tik işareti */
+}

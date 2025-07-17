@@ -1,0 +1,6 @@
+::ng-deep .p-rating .pi {
+  @apply text-yellow-400;
+}
+.p-rating .pi {
+  color: #facc15; /* Tailwind yellow-400 */
+}
