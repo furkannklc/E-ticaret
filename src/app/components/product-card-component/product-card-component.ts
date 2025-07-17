@@ -19,8 +19,11 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ProductCardComponent implements OnInit, OnDestroy {
   productListesi: Product[] = [];
+  productListesiydk: Product[] = [];
   tumUrunler: Product[] = [];
   secilenKategoriler: string[] = [];
+  sortOrder:number = 1;
+
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -30,11 +33,9 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // İlk olarak tüm ürünleri getir
     this.tumUrunleriGetir();
-
-    // Kategori değişikliklerini dinle
     this.secilenKategorileriDinle();
+    this.urunleriIsmeGOreFiltrele()
   }
 
   tumUrunleriGetir(): void {
@@ -53,17 +54,26 @@ export class ProductCardComponent implements OnInit, OnDestroy {
         this.urunleriFiltreUygula(); // Her kategori değişikliğinde filtre uygula
       });
   }
+  urunleriIsmeGOreFiltrele(): void {
+
+    this.filtrelemeServis.arama$.subscribe((aranan) => {
+      this.productListesi = this.productListesiydk.filter(urun =>
+        urun.title.toLowerCase().includes(aranan.toLowerCase())
+      );
+    });
+  }
 
   urunleriFiltreUygula(): void {
     if (this.secilenKategoriler.length === 0) {
-      // Hiç kategori seçilmemişse tüm ürünleri göster
       this.productListesi = [...this.tumUrunler];
     } else {
-      // Seçilen kategorilere göre filtrele
       this.productListesi = this.tumUrunler.filter(product =>
         this.secilenKategoriler.includes(product.category)
       );
+
     }
+    this.productListesiydk= [...this.productListesi];
+    this.urunleriIsmeGOreFiltrele()
     console.log("Filtrelenmiş ürün listesi:", this.productListesi);
   }
 
@@ -75,4 +85,13 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+  urunleriIsmeGoreSirala(): void {
+    this.sortOrder = -1*this.sortOrder; // Yönü tersine çevir
+
+    this.productListesi.sort((a, b) => {
+      return (a.price - b.price) * this.sortOrder;
+    });
+  }
+
 }

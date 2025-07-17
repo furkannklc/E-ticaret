@@ -19,7 +19,6 @@ export class FilterComponent implements OnInit, OnDestroy {
 
   constructor(
     private urunServis: Productservices,
-    private router: Router,
     private filtrelemeServis: Filtrelemeservices
   ) {}
 
@@ -39,17 +38,11 @@ export class FilterComponent implements OnInit, OnDestroy {
   kategoriSecildi(kategori: string) {
     const index = this.secilenKategoriler.indexOf(kategori);
     if (index > -1) {
-      // varsa çıkar
       this.secilenKategoriler.splice(index, 1);
     } else {
-      // yoksa ekle
       this.secilenKategoriler.push(kategori);
     }
-
-    // Yeni diziyi servise gönder
     this.filtrelemeServis.setSecilenKategori([...this.secilenKategoriler]);
-
-    // Router navigation kaldırdık - service otomatik olarak ProductCard'ı güncelleyecek
   }
 
   ngOnDestroy(): void {
