@@ -1,13 +1,17 @@
+<div style="display: flex; flex-direction: row; height: 6rem; gap: 2%; align-items: center; justify-content: space-between; padding: 0 2%; width: 100%;">
 
-
-<div class="flex flex-row  h-24 gap-10 items-center justify-between ">
-  <div class="flex flex-row gap-3 items-center ml-5 ">
-  <i class=" pi pi-compass "  style="color: orange ; font-size: 50px"></i>
-  <h1 class="font-semibold text-2xl font text-amber-500">NetAlışveriş</h1>
+  <!-- Logo Section -->
+  <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; flex-shrink: 0; min-width: 200px;">
+    <i class="pi pi-compass" style="color: orange; font-size: clamp(30px, 4vw, 50px);"></i>
+    <h1 style="font-weight: 600; font-size: clamp(16px, 2.5vw, 24px); color: #f59e0b; white-space: nowrap;">
+      NetAlışveriş
+    </h1>
   </div>
-  <div class="flex ">
+
+  <!-- Search Section -->
+  <div style="display: flex; flex: 1; justify-content: center; padding: 0 2%; max-width: 800px;">
     <input
-      class=" w-200 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-black"
+      style="width: 100%; padding: 2% 4%; border: 1px solid #d1d5db; border-radius: 6px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); outline: none; color: black; font-size: clamp(12px, 1.2vw, 16px); min-height: 40px;"
       pInputText
       [(ngModel)]="aranacak"
       (ngModelChange)="onSearchChange()"
@@ -16,25 +20,32 @@
       placeholder="Aramak istediğiniz ürün ismi giriniz"
     />
   </div>
-  <div class=" flex justify-end mr-5 p-5">
 
-    <ul class="flex flex-row gap-5 text-lg font-semibold text-gray-700">
-      <li><a href="/">Ana Sayfa</a></li>
-      <li><a href="/about">Hakkımızda</a></li>
-      <li><a href="/contact">İletişim</a></li>
-      <li><i style="font-size: 25px;" class="pi pi-user"></i> </li>
-      <li>
-        <div class="relative cursor-pointer" (click)="sepeteGit()">
+  <!-- Navigation Section -->
+  <div style="display: flex; justify-content: flex-end; flex-shrink: 0; padding: 0 1%;">
+    <ul style="display: flex; flex-direction: row; gap: clamp(8px, 1.5vw, 20px); font-size: clamp(12px, 1.2vw, 18px); font-weight: 600; color: #374151; align-items: center; margin: 0; padding: 0; list-style: none;">
+      <li  class="hidden md:block">
+        <a [routerLink]="'/'" style="text-decoration: none; color: inherit; white-space: nowrap;">Ana Sayfa</a>
+      </li>
+      <li  class="hidden md:block">
+        <a href="/about" style="text-decoration: none; color: inherit; white-space: nowrap;">Hakkımızda</a>
+      </li>
+      <li  class="hidden md:block">
+        <a href="/contact" style="text-decoration: none; color: inherit; white-space: nowrap;">İletişim</a>
+      </li>
+      <li style="display: flex; align-items: center;">
+        <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-user"></i>
+      </li>
+      <li style="display: flex; align-items: center;">
+        <div  style="position: relative; cursor: pointer; display: flex; align-items: center;" (click)="sepeteGit()">
           @if (miktar>0) {
-          <span
-          class="absolute top-0 -right-1  bg-amber-600 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow">
-        {{miktar}}
-      </span>
+            <span style="position: absolute; top: -8px; right: -8px; background-color: #d97706; color: white; font-size: clamp(10px, 1vw, 12px); font-weight: bold; border-radius: 50%; width: clamp(16px, 1.5vw, 20px); height: clamp(16px, 1.5vw, 20px); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
+            {{miktar}}
+          </span>
           }
-        <i  style="font-size: 25px" class="pi pi-shopping-cart  mt-1	"></i>
-      </div>
-        </li>
+          <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-shopping-cart"></i>
+        </div>
+      </li>
     </ul>
-
   </div>
 </div>

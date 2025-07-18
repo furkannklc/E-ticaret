@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Rating } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import {ProgressSpinner} from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-product-card-component',
@@ -13,6 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
   imports: [
     Rating,
     FormsModule,
+    ProgressSpinner,
   ],
   templateUrl: './product-card-component.html',
   styleUrl: './product-card-component.css'
@@ -23,7 +25,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   tumUrunler: Product[] = [];
   secilenKategoriler: string[] = [];
   sortOrder:number = 1;
-
+  loading:boolean = false;
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -39,9 +41,11 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   tumUrunleriGetir(): void {
+    this.loading = true;
     this.productservices.urunlerGetir().subscribe((data: Product[]) => {
       this.tumUrunler = data;
-      this.urunleriFiltreUygula(); // İlk yükleme sonrası filtre uygula
+      this.urunleriFiltreUygula();
+      this.loading = false;
     });
   }
 

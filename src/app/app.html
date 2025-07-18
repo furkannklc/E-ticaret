@@ -1,14 +1,10 @@
-
-<div class="min-h-screen flex flex-col">
-
+<div class="min-h-screen flex flex-col w-full">
   <app-navbar-component></app-navbar-component>
-
-
   <div class="flex-1 flex gap-6 p-6">
     <app-filter-component></app-filter-component>
-    <router-outlet></router-outlet>
+    <div class="flex-1 w-full">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-
-
   <app-footer-component></app-footer-component>
 </div>

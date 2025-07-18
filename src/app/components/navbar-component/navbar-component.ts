@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {Filtrelemeservices} from '../../services/filtrelemeservices';
 import {Sepetservices} from '../../services/sepetservices';
 
 @Component({
   selector: 'app-navbar-component',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './navbar-component.html',
   styleUrl: './navbar-component.css'
