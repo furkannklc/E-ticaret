@@ -46,6 +46,11 @@
           <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-shopping-cart"></i>
         </div>
       </li>
+      <li>
+        <button (click)="toggleDarkMode()" class="p-button p-button-text p-2">
+          <i class="pi" [ngClass]="isDark ? 'pi-moon' : 'pi-sun'"></i>
+        </button>
+      </li>
     </ul>
   </div>
 </div>

@@ -1,1 +1,7 @@
-
+@reference "tailwindcss";
+/* Rating için mevcut stiliniz */
+:host ::ng-deep .ui-rating a,
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel),
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
+  color: #ffa700 !important;
+}

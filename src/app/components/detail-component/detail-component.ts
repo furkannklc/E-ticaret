@@ -36,11 +36,11 @@ export class DetailComponent implements OnInit {
     { name: 'gray', bg: 'bg-gray-500', activeBg: 'bg-gray-600', hover: 'hover:bg-gray-600', ring: 'ring-gray-300' }
   ];
   sizes = [
-    { name: 'XS', value: 'xs' },
-    { name: 'S', value: 's' },
-    { name: 'M', value: 'm' },
-    { name: 'L', value: 'l' },
-    { name: 'XL', value: 'xl' }
+    { name: 'XS', value: 'XS' },
+    { name: 'S', value: 'S' },
+    { name: 'M', value: 'M' },
+    { name: 'L', value: 'L' },
+    { name: 'XL', value: 'XL' }
   ];
 
   selectSize(sizeValue: string) {

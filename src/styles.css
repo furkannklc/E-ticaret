@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
-body {
+@import "tailwindcss";
+@import "tailwindcss-primeui";
 
+
+body {
   background-color: #f9fafb !important;
 }
 

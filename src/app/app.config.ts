@@ -6,21 +6,17 @@ import Aura from '@primeuix/themes/aura';
 import {provideHttpClient} from '@angular/common/http';
 import {definePreset} from '@primeuix/themes';
 import {MessageService} from 'primeng/api';
+import Lara from '@primeuix/themes/lara';
 
 export const appConfig: ApplicationConfig = {
   providers: [MessageService,
     provideHttpClient(),
     provideAnimationsAsync(),
     providePrimeNG({
-      theme: {
-        preset:definePreset(Aura, {
-          semantic: {
-            primary: {
-              400: '{yellow.400}',
-              500: '{red.500}',
-            }
-          }
-        })
+      theme: { preset: Lara,options: {
+          // Karanlık modu manuel olarak class üzerinden kontrol edeceğiz
+          darkModeSelector: '.app-dark'
+        }
       }
     })
   ]

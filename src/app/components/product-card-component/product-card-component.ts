@@ -7,6 +7,7 @@ import { Rating } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import {ProgressSpinner} from 'primeng/progressspinner';
+import {Button} from 'primeng/button';
 
 @Component({
   selector: 'app-product-card-component',
@@ -15,6 +16,7 @@ import {ProgressSpinner} from 'primeng/progressspinner';
     Rating,
     FormsModule,
     ProgressSpinner,
+    Button,
   ],
   templateUrl: './product-card-component.html',
   styleUrl: './product-card-component.css'
