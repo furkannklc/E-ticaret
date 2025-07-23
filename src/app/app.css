@@ -13,7 +13,7 @@
   #filter{
     width: auto!important;
   }
-  .buyuk-filtrele{
+  #side-filter{
     display: none !important;
   }
 }

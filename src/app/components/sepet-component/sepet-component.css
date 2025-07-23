@@ -1,0 +1,33 @@
+/* Mobil (900px ve altı) */
+@media (max-width: 900px) {
+  #sepet-card {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  #sepet-ozet {
+    width: 0% !important;
+    display: none !important;
+  }
+
+}
+
+/* Masaüstü (901px ve üzeri) */
+@media (min-width: 901px) {
+  #sepet-card {
+    width: 70% !important;
+    background-color: transparent;
+  }
+  #sepet-ozet {
+    width: 30% !important;
+    display: block !important;
+  }
+  #sepet-ozet-mobil{
+    display: none !important;
+  }
+}
+@media (max-width: 620px) {
+ #sepet-bos{
+   flex-direction: column;
+ }
+
+}

@@ -1,7 +1,7 @@
-<div class="text-[var(--text-color)] dark:text-white" style="display: flex; flex-direction: row; height: 6rem; gap: 2%; align-items: center; justify-content: space-between; padding: 0 2%; width: 100%;">
+<div class="text-[var(--text-color)] dark:text-white border-b border-gray-300 flex flex-row w-full gap-[2%]" style="  height: 6rem; align-items: center; justify-content: space-between; padding: 0 2%; ">
 
   <!-- Logo Section -->
-  <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; flex-shrink: 0; ">
+  <div [routerLink]="'/'" style="display: flex; flex-direction: row; gap: 12px; align-items: center; ">
     <i class="pi pi-compass" style="color: orange; font-size: clamp(30px, 4vw, 50px);"></i>
     <h1 style="font-weight: 600; font-size: clamp(16px, 2.5vw, 24px); color: #f59e0b; white-space: nowrap;">
       NetAlışveriş
@@ -21,17 +21,15 @@
   </div>
 
   <!-- Navigation Section -->
-  <div style="display: flex; justify-content: flex-end; flex-shrink: 0; padding: 0 1%;">
-    <ul style="display: flex; flex-direction: row; gap: clamp(8px, 1.5vw, 20px); font-size: clamp(12px, 1.2vw, 18px); font-weight: 600; color: #374151; align-items: center; margin: 0; padding: 0; list-style: none;">
+  <div style="display: flex; justify-content: flex-end;  padding: 0 1%;">
+    <ul style="display: flex; flex-direction: row; gap: clamp(8px, 1.5vw, 20px); font-weight: 600; color: #374151; align-items: center; margin: 0; padding: 0; list-style: none;">
       <li  class="hidden md:block">
         <a [routerLink]="'/'" style="text-decoration: none; color: inherit; white-space: nowrap;">Ana Sayfa</a>
       </li>
       <li  class="hidden md:block">
         <a href="/about" style="text-decoration: none; color: inherit; white-space: nowrap;">Hakkımızda</a>
       </li>
-      <li  class="hidden md:block">
-        <a href="/contact" style="text-decoration: none; color: inherit; white-space: nowrap;">İletişim</a>
-      </li>
+
       <li style="display: flex; align-items: center;">
         <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-user"></i>
       </li>
