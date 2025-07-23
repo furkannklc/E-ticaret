@@ -1,7 +1,7 @@
-<div style="display: flex; flex-direction: row; height: 6rem; gap: 2%; align-items: center; justify-content: space-between; padding: 0 2%; width: 100%;">
+<div class="text-[var(--text-color)] dark:text-white" style="display: flex; flex-direction: row; height: 6rem; gap: 2%; align-items: center; justify-content: space-between; padding: 0 2%; width: 100%;">
 
   <!-- Logo Section -->
-  <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; flex-shrink: 0; min-width: 200px;">
+  <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; flex-shrink: 0; ">
     <i class="pi pi-compass" style="color: orange; font-size: clamp(30px, 4vw, 50px);"></i>
     <h1 style="font-weight: 600; font-size: clamp(16px, 2.5vw, 24px); color: #f59e0b; white-space: nowrap;">
       NetAlışveriş
@@ -9,10 +9,9 @@
   </div>
 
   <!-- Search Section -->
-  <div style="display: flex; flex: 1; justify-content: center; padding: 0 2%; max-width: 800px;">
+  <div style="display: flex; flex: 1; justify-content: center; padding: 0 2%; max-width: 800px;" >
     <input
       style="width: 100%; padding: 2% 4%; border: 1px solid #d1d5db; border-radius: 6px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); outline: none; color: black; font-size: clamp(12px, 1.2vw, 16px); min-height: 40px;"
-      pInputText
       [(ngModel)]="aranacak"
       (ngModelChange)="onSearchChange()"
       type="text"
@@ -47,7 +46,7 @@
         </div>
       </li>
       <li>
-        <button (click)="toggleDarkMode()" class="p-button p-button-text p-2">
+        <button (click)="toggleDark()" class="p-button p-button-text p-2">
           <i class="pi" [ngClass]="isDark ? 'pi-moon' : 'pi-sun'"></i>
         </button>
       </li>

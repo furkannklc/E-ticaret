@@ -1,8 +1,16 @@
-<div class="min-h-screen flex flex-col w-full">
+<div style="width: 100%" class="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text-color)] dark:bg-black dark:text-white" >
   <app-navbar-component></app-navbar-component>
-  <div class="flex-1 flex gap-6 p-6">
-    <app-filter-component></app-filter-component>
-    <div class="flex-1 w-full">
+  <div id="orta-sayfa"  class="flex flex gap-6 p-6 w-full flex-grow" style="background: var(--bg); color: var(--text-color);">
+    <div class="buyuk-filtrele">
+      <app-filter-component></app-filter-component>
+    </div>
+    <div  class="flex flex-col  bg-[var(--bg)] text-[var(--text-color)] dark:bg-black dark:text-white w-full" >
+      @if (showSortButton){
+        <div  id="buton" class="flex flex-row gap-3 p-3 ">
+          <p-button label="Fiyata göre sırala" variant="text" [raised]="true" severity="info"  (click)="siralaButonunaTiklandi()"/>
+          <app-filter-component></app-filter-component>
+        </div>
+      }
       <router-outlet></router-outlet>
     </div>
   </div>

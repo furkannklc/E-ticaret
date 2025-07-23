@@ -2,3 +2,16 @@
 ::ng-deep .p-rating .p-rating-icon.pi-star-fill {
   color: gold; /* Dolu yıldız rengi */
 }
+
+  @media (max-width: 1280px) {
+    #puanlama {
+     flex-direction: column;
+    }
+    #puanlama span{
+      margin-top: 0;
+    }
+    #cards{
+      padding:3px !important;
+    }
+  }
+

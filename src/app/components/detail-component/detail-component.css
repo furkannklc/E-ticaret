@@ -5,3 +5,19 @@
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: #ffa700 !important;
 }
+@media (max-width: 750px) {
+    #mobil-card-container{
+      flex-direction: column;
+      height: 100%;
+      padding: 30px!important;
+      gap: 10px!important;
+    }
+    #mobil-card-img{
+  width: 100%!important;
+    }
+    #mobil-card-info{
+    width: 100%!important;
+    }
+
+}
+

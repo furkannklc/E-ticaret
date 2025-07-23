@@ -1,4 +1,4 @@
-::ng-deep .p-checkbox-box.p-highlight {
+px::ng-deep .p-checkbox-box.p-highlight {
   @apply bg-red-400 border-red-400;
 }
 
@@ -8,4 +8,14 @@
 
 ::ng-deep .p-checkbox .pi-check {
   @apply text-white; /* Tik işareti */
+
+}
+
+@media (min-width: 900px) {
+  #k {
+    display: none !important;
+  }
+  p-autocomplate{
+    display :none !important;
+  }
 }

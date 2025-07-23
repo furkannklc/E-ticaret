@@ -1,10 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
 @import "tailwindcss";
 @import "tailwindcss-primeui";
 
+/* 1. Dark için gerekli custom-variant */
+@custom-variant dark (&:where(.dark, .dark *));
 
-body {
-  background-color: #f9fafb !important;
+/* 2. Tema değişkenleri */
+@theme inline {
+  --bg: #ffffff;
+  --fg: #000000;
+  --text-color: var(--fg);
 }
 
+/* 3. Dark modu için değişken güncelle */
+@layer theme {
+  .dark {
+    --bg: #000000;
+    --fg: #ffffff;
+    --text-color: var(--fg);
+  }
+}
+
+
+/* İstersen, arka planı body'de de uygulamak için */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

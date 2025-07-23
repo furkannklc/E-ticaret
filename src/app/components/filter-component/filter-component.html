@@ -5,13 +5,44 @@
 <!--</div>-->
 
 <aside
-  class="w-52 bg-gradient-to-b from-white to-gray-100 p-5 rounded-xl sticky top-6 min-h-[700px] h-fit shadow-lg border border-gray-200 text-black" >
-  <h3 class="text-lg font-semibold mb-4">Filters</h3>
+  class="hidden min-[900px]:block bg-gradient-to-b from-white to-gray-100 p-4 rounded-xl sticky top-6 min-h-[700px] h-fit shadow-lg border border-gray-200 text-black w-full"
+>
+  <h3 class="text-lg font-semibold mb-4 items-center" style="font-size: clamp(12px, 2vw, 18px);">
+    Category
+  </h3>
+
   @for (kategori of kategoriler; track $index)
   {
-    <div class="flex items-center mb-2">
-      <input inputId="ingredient1" name="pizza" [value]=kategori type="checkbox" (click)="kategoriSecildi(kategori)" />
-      <label for="ingredient1" class="ml-2"> {{kategori}}</label>
+    <div
+      (click)="kategoriSecildi(kategori)"
+      class="flex items-center mb-2 rounded-lg px-3 py-2 cursor-pointer border transition-all duration-200"
+      [ngStyle]="{
+        'background': secilenKategoriler.includes(kategori) ? '#4F46E5' : 'transparent',
+        'color': secilenKategoriler.includes(kategori) ? 'white' : 'black',
+        'borderColor': secilenKategoriler.includes(kategori) ? '#4F46E5' : '#ccc',
+        'fontWeight': secilenKategoriler.includes(kategori) ? '600' : 'normal'
+      }"
+    >
+      <label class="cursor-pointer w-full" style="font-size: clamp(12px, 2vw, 16px);">
+        {{ kategori }}
+      </label>
     </div>
   }
 </aside>
+
+<div  class="hidden max-[900px]:block">
+  <p-multiSelect
+    [(ngModel)]="secilenKategoriler"
+    [options]="kategoriler"
+    optionLabel=""
+    placeholder="Kategori seçin"
+    display="chip"
+    class="w-full"
+    [filter]="true"
+    panelStyleClass="!bg-white !text-black"
+    [showToggleAll]="false"
+    (ngModelChange)="kategoriSecildi($event)">
+  </p-multiSelect>
+</div>
+
+<!--      <input  inputId="ingredient1" name="pizza" [value]=kategori type="checkbox" (click)="kategoriSecildi(kategori)" />-->

@@ -1,19 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Productservices} from '../../services/productservices'; // Adjust the import path as necessary
-import {Product} from '../../models/product.model';
-import {RadioButton} from 'primeng/radiobutton';
-import {FormsModule} from '@angular/forms';
-import {Rating} from 'primeng/rating';
-import {InputNumber} from 'primeng/inputnumber';
-import { MessageService } from 'primeng/api';
 import {Toast} from 'primeng/toast';
+import {Rating} from 'primeng/rating';
 import {Ripple} from 'primeng/ripple';
-import {AutoCompleteCompleteEvent, AutoCompleteModule} from 'primeng/autocomplete';
+import {FormsModule} from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Product} from '../../models/product.model';
+import {ProgressSpinner} from 'primeng/progressspinner';
+import {Productservices} from '../../services/productservices';
 import {Sepetservices} from '../../services/sepetservices';
 import {SepeteEklenenModel} from '../../models/sepeteEklenen.model';
-import { Router } from '@angular/router';
-import {ProgressSpinner} from 'primeng/progressspinner';
+import {AutoCompleteCompleteEvent, AutoCompleteModule} from 'primeng/autocomplete';
 @Component({
   selector: 'app-detail-component',
   imports: [
@@ -66,7 +63,7 @@ export class DetailComponent implements OnInit {
     private urunServis:Productservices,
     private messageService: MessageService,
     private sepetservices : Sepetservices,
-    private router: Router) { }
+    ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

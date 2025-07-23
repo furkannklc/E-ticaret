@@ -21,9 +21,8 @@ export class NavbarComponent implements OnInit {
   isDark = false;
   private doc = inject(DOCUMENT);
 
-  toggleDarkMode() {
-    this.isDark = !this.isDark;
-    this.doc.documentElement.classList.toggle('app-dark', this.isDark);
+  toggleDark() {
+    document.documentElement.classList.toggle('dark');
   }
 
 

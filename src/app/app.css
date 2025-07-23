@@ -3,3 +3,22 @@
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: #ffa700 !important;
 }
+@media (max-width: 899px) {
+  #buton{
+    display: flex !important;
+  }
+  #orta-sayfa {
+   padding: 1px !important;
+  }
+  #filter{
+    width: auto!important;
+  }
+  .buyuk-filtrele{
+    display: none !important;
+  }
+}
+@media (width>899px) {
+  #buton{
+  display: none !important;
+}}
+

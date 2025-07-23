@@ -5,9 +5,10 @@ import { Filtrelemeservices } from '../../services/filtrelemeservices';
 import { Router } from '@angular/router';
 import { Rating } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import {Subject, Subscription, takeUntil} from 'rxjs';
 import {ProgressSpinner} from 'primeng/progressspinner';
 import {Button} from 'primeng/button';
+import {Siralaservices} from '../../services/siralaservices';
 
 @Component({
   selector: 'app-product-card-component',
@@ -21,25 +22,32 @@ import {Button} from 'primeng/button';
   templateUrl: './product-card-component.html',
   styleUrl: './product-card-component.css'
 })
+
 export class ProductCardComponent implements OnInit, OnDestroy {
+
   productListesi: Product[] = [];
   productListesiydk: Product[] = [];
   tumUrunler: Product[] = [];
   secilenKategoriler: string[] = [];
   sortOrder:number = 1;
   loading:boolean = false;
+  subscription: Subscription = new Subscription();
   private destroy$ = new Subject<void>();
 
   constructor(
     private productservices: Productservices,
     private router: Router,
-    private filtrelemeServis: Filtrelemeservices
+    private filtrelemeServis: Filtrelemeservices,private siralaservices : Siralaservices
   ) {}
 
   ngOnInit(): void {
     this.tumUrunleriGetir();
     this.secilenKategorileriDinle();
     this.urunleriIsmeGOreFiltrele()
+
+    this.subscription = this.siralaservices.siralamaObservable$.subscribe(() => {
+      this.urunleriIsmeGoreSirala();  // burası senin sıralama fonksiyonun
+    });
   }
 
   tumUrunleriGetir(): void {
@@ -90,11 +98,12 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.subscription.unsubscribe();
+
   }
 
   urunleriIsmeGoreSirala(): void {
     this.sortOrder = -1*this.sortOrder; // Yönü tersine çevir
-
     this.productListesi.sort((a, b) => {
       return (a.price - b.price) * this.sortOrder;
     });
