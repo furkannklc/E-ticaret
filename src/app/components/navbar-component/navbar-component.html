@@ -1,7 +1,7 @@
-<div class="text-[var(--text-color)] dark:text-white border-b border-gray-300 flex flex-row w-full gap-[2%]" style="  height: 6rem; align-items: center; justify-content: space-between; padding: 0 2%; ">
+<div class="text-[var(--text-color)] dark:text-white border-b border-gray-300 dark:border-white/20  flex flex-row w-full gap-[2%]" style="  height: 6rem; align-items: center; justify-content: space-between; padding: 0 2%; ">
 
   <!-- Logo Section -->
-  <div [routerLink]="'/'" style="display: flex; flex-direction: row; gap: 12px; align-items: center; ">
+  <div [routerLink]="'/'"class="cursor-pointer" style="display: flex; flex-direction: row; gap: 12px; align-items: center; ">
     <i class="pi pi-compass" style="color: orange; font-size: clamp(30px, 4vw, 50px);"></i>
     <h1 style="font-weight: 600; font-size: clamp(16px, 2.5vw, 24px); color: #f59e0b; white-space: nowrap;">
       NetAlışveriş
@@ -9,9 +9,12 @@
   </div>
 
   <!-- Search Section -->
-  <div style="display: flex; flex: 1; justify-content: center; padding: 0 2%; max-width: 800px;" >
+  <div class="dark:text-white" style="display: flex; flex: 1; justify-content: center; padding: 0 2%; max-width: 800px;" >
     <input
-      style="width: 100%; padding: 2% 4%; border: 1px solid #d1d5db; border-radius: 6px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); outline: none; color: black; font-size: clamp(12px, 1.2vw, 16px); min-height: 40px;"
+      class="w-full p-4 border border-white/30 rounded shadow-sm
+         text-black dark:text-white
+         placeholder-gray-500 dark:placeholder-white
+         bg-white dark:bg-black transition-colors"
       [(ngModel)]="aranacak"
       (ngModelChange)="onSearchChange()"
       type="text"
@@ -21,17 +24,17 @@
   </div>
 
   <!-- Navigation Section -->
-  <div style="display: flex; justify-content: flex-end;  padding: 0 1%;">
+  <div  style="display: flex; justify-content: flex-end;  padding: 0 1%;">
     <ul style="display: flex; flex-direction: row; gap: clamp(8px, 1.5vw, 20px); font-weight: 600; color: #374151; align-items: center; margin: 0; padding: 0; list-style: none;">
-      <li  class="hidden md:block">
+      <li  class="hidden md:block dark:text-white">
         <a [routerLink]="'/'" style="text-decoration: none; color: inherit; white-space: nowrap;">Ana Sayfa</a>
       </li>
-      <li  class="hidden md:block">
+      <li  class="hidden md:block dark:text-white">
         <a href="/about" style="text-decoration: none; color: inherit; white-space: nowrap;">Hakkımızda</a>
       </li>
 
       <li style="display: flex; align-items: center;">
-        <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-user"></i>
+        <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-user dark:text-white"></i>
       </li>
       <li style="display: flex; align-items: center;">
         <div  style="position: relative; cursor: pointer; display: flex; align-items: center;" (click)="sepeteGit()">
@@ -40,13 +43,11 @@
             {{miktar}}
           </span>
           }
-          <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-shopping-cart"></i>
+          <i style="font-size: clamp(18px, 2vw, 25px);" class="pi pi-shopping-cart dark:text-white"></i>
         </div>
       </li>
       <li>
-        <button (click)="toggleDark()" class="p-button p-button-text p-2">
-          <i class="pi" [ngClass]="isDark ? 'pi-moon' : 'pi-sun'"></i>
-        </button>
+          <i  (click)="toggleDark()" style="font-size: clamp(18px, 2vw, 25px);" class="pi dark:text-white p-2 cursor-pointer" [ngClass]="isDark ? 'pi-moon' : 'pi-sun'"></i>
       </li>
     </ul>
   </div>

@@ -22,14 +22,16 @@ export class NavbarComponent implements OnInit {
   private doc = inject(DOCUMENT);
 
   toggleDark() {
-    document.documentElement.classList.toggle('dark');
+    const classList = this.doc.documentElement.classList;
+    classList.toggle('dark');
+    this.isDark = classList.contains('dark'); // burada güncelliyoruz
   }
 
 
   constructor(
     private router : Router,
     private filtrelemeServis:Filtrelemeservices ,private sepetservis:Sepetservices) {
-    this.isDark = this.doc.documentElement.classList.contains('app-dark');
+    this.isDark = this.doc.documentElement.classList.contains('dark');
   }
 
   ngOnInit(): void {

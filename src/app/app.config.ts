@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       theme: { preset: Lara,options: {
           // Karanlık modu manuel olarak class üzerinden kontrol edeceğiz
-          darkModeSelector: '.app-dark'
+          darkModeSelector: '.dark'
         }
       }
     })

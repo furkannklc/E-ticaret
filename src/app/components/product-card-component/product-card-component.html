@@ -4,8 +4,8 @@
   </div>
 } @else {
 
-<div  class="hidden min-[900px]:block w-full bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-4 flex justify-start" style="background: var(--bg); color: var(--text-color);">
-  <p-button label="Fiyata göre sırala" variant="text" [raised]="true" severity="info" (click)="urunleriIsmeGoreSirala()" />
+<div  class="border-white/20 hidden min-[900px]:block w-full bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-4 flex justify-start" style="background: var(--bg); color: var(--text-color);">
+  <p-button styleClass="dark:border! dark:border-white/20! " label="Fiyata göre sırala" variant="text" [raised]="true" severity="info" (click)="urunleriIsmeGoreSirala()" />
 </div>
 
 <!-- Cards alanı -->
@@ -31,25 +31,30 @@
       </button>
 
       <!-- Ürün resmi -->
-      <div class="mt-8 mb-3 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
-        <img [src]="product.image" alt="{{product.title}}" class="w-full h-36 object-contain mx-auto bg-gray-50 group-hover:bg-gray-100 transition-colors"/>
+      <div class="mt-8 mb-3 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow dark:group-hover:bg-black">
+        <img [src]="product.image" alt="{{product.title}}" class="
+      w-full h-36 object-contain mx-auto
+      bg-gray-50 group-hover:bg-white-100
+      dark:bg-black dark:group-hover:bg-black
+      transition-colors
+    "/>
       </div>
 
       <!-- Ürün başlığı ve açıklama -->
-      <div class="mt-3 text-xs text-gray-700 font-semibold line-clamp-2 min-h-[2.5rem] leading-relaxed">
-        {{product.title}}
+      <div class="  mt-3 text-xs text-gray-700 font-semibold line-clamp-2 min-h-[2.5rem] leading-relaxed">
+        <span class="dark:text-white">{{product.title}}</span>
       </div>
 
       <!-- Favorileme sayısı -->
       <div class="flex items-center gap-1 mt-2 text-orange-500 font-semibold text-[10px]">
         <i class="pi pi-heart-fill text-[10px]"></i>
-        <span class="text-gray-600">5 kişi favoriledi!</span>
+        <span class="dark:text-white text-gray-600">5 kişi favoriledi!</span>
       </div>
 
       <!-- Puanlama -->
       <div id="puanlama" class="flex  gap-2  mt-2 w-full ">
         <p-rating class="scale-[0.6] sm:scale-[0.7] md:scale-[0.8] lg:scale-[0.9] xl:scale-[1] origin-left"  [(ngModel)]="product.rating.rate" [disabled]="true" />
-        <span class="text-[10px] text-gray-500 mt-1">({{product.rating.rate}})</span>
+        <span class="dark:text-white text-[10px] text-gray-500 mt-1">({{product.rating.rate}})</span>
       </div>
 
       <!-- Fiyat -->

@@ -8,7 +8,7 @@
 } @else {
 
 
-<div id="mobil-card-container" style="background: var(--bg); color: var(--text-color);" class="flex flex-row p-10 caret-orange-900 rounded-xl shadow-lg border border-gray-200 gap-15 w-full h-180 ">
+<div id="mobil-card-container" style="background: var(--bg); color: var(--text-color);" class="flex flex-row p-10 caret-orange-900 rounded-xl shadow-lg border border border-white/20  gap-15 w-full h-180 ">
   <div id="mobil-card-img" style="width: 36% ">
   <img [src]=urun.image class="rounded-lg shadow-lg w-full h-full" alt="{{urun.title}}">
 
@@ -18,10 +18,14 @@
       <h2 class="text-xl font-semibold text-[var(--text-color)] dark:text-white">{{ urun.title}}</h2>
       <div class="flex flex-row items-center gap-2">
         <p-rating [(ngModel)]="urun.rating.rate" [disabled]="true" cancel="false"></p-rating>
-        <span class="text-[15px] text-gray-500">({{urun.rating.rate}})</span>
+        <span class="dark:text-white text-[15px] text-gray-500">({{urun.rating.rate}})</span>
       </div>
       <p class="text-2xl font-bold mt-1 ">${{urun.price}}</p>
-      <p>{{urun.description}}</p>
+      <div class="mt-1">
+        <p class="overflow-y-auto h-32 line-clamp-none">
+          {{ urun.description }}
+        </p>
+      </div>
       <div>
 
         <p class="font-medium mb-1">Color</p>
@@ -44,33 +48,38 @@
         </div>
         <div class="grid grid-cols-5 gap-2 mt-5 text-[var(--text-color)] dark:text-white" >
           @for (size of sizes; track size.value) {
-            <button class="cursor-pointer"
+            <button
+              class="cursor-pointer rounded px-3 py-2 text-sm transition-all duration-200
+         border border-gray-300 hover:border-green-400 hover:bg-green-50
+         dark:border-gray-600 dark:hover:border-green-500 dark:hover:bg-green-800
+
+         focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-600"
+
               (click)="selectSize(size.value)"
-              [class]="isSizeSelected(size.value) ?
-          'border rounded px-3 py-2 text-sm border-green-500 bg-green-50 text-green-700 transition-all duration-200' :
-          'border rounded px-3 py-2 text-sm border-gray-300 hover:border-green-400 hover:bg-green-50 transition-all duration-200'">
+              [ngClass]="isSizeSelected(size.value)
+    ? 'bg-green-100 text-green-800 border-green-500 dark:bg-green-800 dark:text-green-200 dark:border-green-400'
+    : ''"
+            >
               {{ size.name }}
             </button>
           }
         </div>
       </div>
 
-      <div class="flex items-center gap-3 mt-10">
+      <div class="flex items-center gap-3 mt-10 ">
         <div class="flex w-[40%] rounded bg-white">
           <p-autoComplete
             [(ngModel)]="selectedQuantity"
             [dropdown]="true"
             [suggestions]="items"
             (completeMethod)="search($event)"
-            class="w-full bg-white text-white"
-            inputStyleClass="!bg-white !text-black"
-            panelStyleClass="!bg-white !text-black"
+            class="w-full bg-white text-white !rounded-full"
             appendTo="body"
             [panelStyle]="{'transform': 'translateY(-100%)', 'margin-top': '-8px'}"
           ></p-autoComplete>
         </div>
 
-        <button pRipple (click)="showBottomRight()"  class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Add to Cart</button>
+        <button pRipple (click)="showBottomRight()"  class="flex-1 bg-orange-500 hover:bg-orange-600  text-white py-2 px-4 rounded">Add to Cart</button>
       </div>
     </div>
 

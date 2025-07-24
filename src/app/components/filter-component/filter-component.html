@@ -5,9 +5,12 @@
 <!--</div>-->
 
 <aside
-  class="hidden min-[900px]:block bg-gradient-to-b from-white to-gray-100 p-4 rounded-xl sticky top-6 min-h-[700px] h-fit shadow-lg border border-gray-200 text-black w-full"
+  class="min-[900px]:block w-full sticky top-6 min-h-[700px] h-fit hidden min-[900px]:block
+         bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900
+         text-black dark:text-white
+         p-4 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
 >
-  <h3 class="text-lg font-semibold mb-4 items-center" style="font-size: clamp(12px, 2vw, 18px);">
+  <h3 class="text-lg font-semibold mb-4" style="font-size: clamp(12px, 2vw, 18px);">
     Category
   </h3>
 
@@ -15,12 +18,12 @@
   {
     <div
       (click)="kategoriSecildi(kategori)"
-      class="flex items-center mb-2 rounded-lg px-3 py-2 cursor-pointer border transition-all duration-200"
-      [ngStyle]="{
-        'background': secilenKategoriler.includes(kategori) ? '#4F46E5' : 'transparent',
-        'color': secilenKategoriler.includes(kategori) ? 'white' : 'black',
-        'borderColor': secilenKategoriler.includes(kategori) ? '#4F46E5' : '#ccc',
-        'fontWeight': secilenKategoriler.includes(kategori) ? '600' : 'normal'
+      class="flex items-center mb-2 rounded-lg px-3 py-2 cursor-pointer border
+             transition-all duration-200
+             "
+      [ngClass]="{
+        'bg-indigo-600 text-white border-indigo-600 font-semibold': secilenKategoriler.includes(kategori),
+        'bg-transparent text-black dark:text-white border-gray-300 dark:border-gray-700': !secilenKategoriler.includes(kategori)
       }"
     >
       <label class="cursor-pointer w-full" style="font-size: clamp(12px, 2vw, 16px);">
@@ -30,19 +33,20 @@
   }
 </aside>
 
+
 <div  class="hidden max-[900px]:block">
   <p-multiSelect
     [(ngModel)]="secilenKategoriler"
     [options]="kategoriler"
-    optionLabel=""
     placeholder="Kategori seçin"
     display="chip"
     class="w-full"
     [filter]="true"
-    panelStyleClass="!bg-white !text-black"
     [showToggleAll]="false"
+    panelStyleClass="!bg-white !text-black dark:!bg-gray-800 dark:!text-white"
     (ngModelChange)="kategoriSecildi($event)">
   </p-multiSelect>
+
 </div>
 
 <!--      <input  inputId="ingredient1" name="pizza" [value]=kategori type="checkbox" (click)="kategoriSecildi(kategori)" />-->

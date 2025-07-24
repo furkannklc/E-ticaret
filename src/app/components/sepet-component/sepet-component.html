@@ -6,61 +6,76 @@
   </div>
 } @else {
 
-  <div class="flex flex-col rounded gap-5 rounded-xl shadow-lg border border-gray-200 py-2 w-full flex-1 px-2">
+  <div class="min-h-screen flex flex-col rounded gap-5 rounded-xl shadow-lg border border-white/20 py-2 w-full flex-1 px-2">
     @if (miktar > 0) {
-      <div class="flex flex-col mb-15">
+      <div class=" flex flex-col mb-15">
       <div class="flex flex-row w-full">
       <div id="sepet-card"  style="width: 70%" class="flex flex-col w-full gap-4 p-3 ">
         @for (urun of sepetUrunleri; track urun.id) {
-          <div class="flex flex-row  w-full  justify-between p-8  gap-4 bg-white rounded-lg shadow-sm text-black">
-            <div class="flex flex-row gap-4 w-full">
-              <img [src]="urun.image" alt="Product Image" class="w-[20%] h-24 rounded-md"/>
-              <div class="flex flex-col">
-                <h1 style="color: black; font-weight: bold; font-size: 15px">{{ urun.title }}</h1>
-                <span style="color: black;  font-size: 30px">{{ urun.size }}</span>
-                <span>{{ urun.color }}</span>
+          <div id="mobil-sepet" class="rounded-xl shadow-lg border border-white/20 bg-white/90 dark:bg-black backdrop-blur-sm flex flex-row h-60 w-full  justify-between p-8  gap-4 bg-white rounded-lg shadow-sm text-black">
+            <div class="flex flex-row gap-4 w-full ">
+              <img  id="mobil-img" [src]="urun.image" alt="Product Image" class="w-[20%]  rounded-md "/>
+              <div class="flex flex-col gap-3">
+                <h1 class="dark:text-white line-clamp-2" style=" font-weight: bold; font-size: 15px">{{ urun.title }}</h1>
+                <div class="item-center  flex flex-row">
+                  <span class="dark:text-white">Beden: </span>
+                  <span class="dark:text-white font-bold px-2" >{{ urun.size }}</span>
                 </div>
+                <div>
+                  <span class="dark:text-white">Renk: </span>
+                  <span class="dark:text-white font-bold px-2" >{{ urun.color }}</span>
+                </div>
+                <div class="mt-auto">
+                  <p-autoComplete
+                  [(ngModel)]="urun.count"
+                  [dropdown]="true"
+                  [suggestions]="quantityItems"
+                  (completeMethod)="searchQuantity($event)"
+                  (onSelect)="updateQuantity(urun, urun.count)"
+                  class="w-[50%] "
+                  inputStyleClass="bg-white text-black p-1"
+                ></p-autoComplete></div>
+              </div>
             </div>
-            <div class="flex flex-col gap-4">
-            <div class="flex flex-row gap-4 ">
-              <span>${{ urun.price * urun.count }}</span>
-              <i (click)="urunuSil(urun.id,urun.size,urun.color)" class="pi pi-trash mt-1 "></i>
-            </div>
-            <p-autoComplete
-              [(ngModel)]="urun.count"
-              [dropdown]="true"
-              [suggestions]="quantityItems"
-              (completeMethod)="searchQuantity($event)"
-              (onSelect)="updateQuantity(urun, urun.count)"
-              class="w-25"
-              inputStyleClass="bg-white text-black text-center p-1"
+            <div class="flex flex-col gap-4  ">
+              <div class="flex flex-row gap-4 dark:text-white ml-auto ">
+                <i style="font-size: 25px " (click)="urunuSil(urun.id,urun.size,urun.color)" class="pi pi-trash cursor-pointer "></i>
+              </div>
+              <div class="mt-auto">
+                <span class="ml-auto dark:text-white text-xl font-bold ">${{ urun.price * urun.count }}</span>
+              </div>
 
-            ></p-autoComplete>
-          </div>
+            </div>
           </div>
         }
       </div>
-        <div id="sepet-ozet" class="py-3 w-[30%]">
+        <div id="sepet-ozet" class=" py-3 w-[30%]">
           <aside
-            class="hidden min-[900px]:block bg-gradient-to-b from-white to-gray-100 p-4 rounded-xl sticky top-6 min-h-[300px] h-fit shadow-lg border border-gray-200 text-black w-full">
-                  <div class="flex flex-col w-full gap-3 p-3  justify-center gap-2 ">
+            class="border border-white/20  hidden min-[900px]:block
+         bg-gradient-to-b from-white to-gray-100
+         dark:bg-black dark:bg-none
+         dark:text-white
+         p-4 rounded-xl sticky top-6 min-h-[300px] h-fit
+         shadow-lg border
+         text-black w-full"                 >
+            <div class="flex flex-col w-full gap-3 p-3  justify-center gap-2  ">
                     <p class="font-serif text-[30px]">Sipariş Özeti </p>
-                    <hr class="my-4 border-t border-gray-200 "/>
+                    <hr class="my-4 border-t border-gray-200 dark:border-white/20 "/>
 
                     <div class="flex flex-row gap-5 justify-between w-full">
-                      <p class="text-black text-[18px] whitespace-nowrap">
+                      <p class="dark:text-white text-black text-[18px] whitespace-nowrap">
                         Toplam
                       </p>
 
                       <p class="text-[#ffaf1a] break-words text-right max-w-[70%]">
-                        ${{ toplamFiyati }}vbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                        ${{ toplamFiyati }}
                       </p>
                     </div>
 
             <!--        <p style="color: #666; font-size: 18px; margin-bottom: 30px;">-->
             <!--          FREE SHIPPING AND RETURN-->
             <!--        </p>-->
-                    <button routerLink="/" class="bg-green-500 hover:bg-green-600  w-full text-white font-semibold mt-3 py-3 rounded-lg transition-colors ">
+                    <button routerLink="/" class="bg-orange-500 hover:bg-orange-600   w-full text-white font-semibold mt-3 py-3 rounded-lg transition-colors ">
                       Alışverişi Bitir
                     </button>
                   </div>
@@ -80,32 +95,37 @@
       </div>
       <div id="sepet-ozet-mobil" class="block min-[900px]:hidden">
         <footer
-          class="fixed bottom-0 left-0 z-50  bg-white border-t w-full p-4 shadow-lg flex flex-col gap-4">
+          class="fixed bottom-0 left-0 z-50 w-full p-4 shadow-lg flex flex-col gap-4
+      bg-white dark:bg-black text-black dark:text-white
 
+      border border-orange-500/20
+      dark:border-white/20
+      border-solid
+    "
+        >
+          <span class="font-bold text-orange-300 text-xl">SİPARİŞ ÖZETİ</span>
           <div class="flex flex-row justify-between items-center">
-            <p class="text-black text-[18px] whitespace-nowrap">
-              Toplam
-            </p>
-
+            <p class="text-[18px] whitespace-nowrap">Toplam</p>
             <p class="text-[#ffaf1a] text-[18px] break-words max-w-[70%] text-right">
               ${{ toplamFiyati }}
             </p>
           </div>
-
-          <button routerLink="/" class="w-full text-white font-semibold py-3 px-4 rounded-lg bg-green-600 hover:bg-green-700 transition-colors">
+          <button
+            routerLink="/"
+            class="w-full text-white font-semibold py-3 px-4 rounded-lg bg-orange-500 hover:bg-orange-600 transition-colors"
+          >
             Alışverişi Bitir
           </button>
-
         </footer>
       </div>
     } @else {
-      <div id="sepet-bos" class="w-full flex flex-row gap-3 items-center ml-5 p-10 justify-between">
+      <div id="sepet-bos" class=" w-full flex flex-row gap-3 items-center ml-5 p-10 justify-between">
         <div class="p-3 flex flex-row gap-8 items-center">
           <div class="p-5 bg-orange-100 rounded-full">
             <i style="font-size: 30px; color: #ffa700;" class="pi pi-shopping-cart mt-1"></i>
           </div>
-          <span style="font-size: 30px" class="text-black">Sepetinizde Ürün Bulunmamaktadır</span>
-        </div>
+          <span style="font-size: 30px" class="text-black dark:text-white">Sepetinizde Ürün Bulunmamaktadır</span>
+        </div>git
         <div>
           <button
             class="text-white bg-orange-400 rounded-full px-10 py-3 cursor-pointer hover:bg-orange-500 transition-colors"

@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
 import { Filtrelemeservices } from '../../services/filtrelemeservices';
 import { Subject, takeUntil } from 'rxjs';
 import {Button} from 'primeng/button';
-import {NgStyle} from '@angular/common';
+import {NgClass, NgStyle} from '@angular/common';
 import {AutoComplete} from 'primeng/autocomplete';
 import {MultiSelect} from 'primeng/multiselect';
 
 @Component({
   selector: 'app-filter-component',
-  imports: [Checkbox, FormsModule, Button, NgStyle, AutoComplete, MultiSelect],
+  imports: [Checkbox, FormsModule, Button, NgStyle, AutoComplete, MultiSelect, NgClass],
   templateUrl: './filter-component.html',
   styleUrl: './filter-component.css'
 })

@@ -11,6 +11,7 @@ import {Productservices} from '../../services/productservices';
 import {Sepetservices} from '../../services/sepetservices';
 import {SepeteEklenenModel} from '../../models/sepeteEklenen.model';
 import {AutoCompleteCompleteEvent, AutoCompleteModule} from 'primeng/autocomplete';
+import {NgClass} from '@angular/common';
 @Component({
   selector: 'app-detail-component',
   imports: [
@@ -19,7 +20,8 @@ import {AutoCompleteCompleteEvent, AutoCompleteModule} from 'primeng/autocomplet
     Toast,
     Ripple,
     AutoCompleteModule,
-    ProgressSpinner
+    ProgressSpinner,
+    NgClass
   ],
   templateUrl: './detail-component.html',
   styleUrl: './detail-component.css',
